@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Chat App</title>
+</head>
+<body>
+
+<h1>My Chat App</h1>
+<h3>Hi {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Guest{% endif %}!</h3>
+
+{% if current_user.is_authenticated %}
+    <h3>My rooms</h3>
+    <ul>
+        {% for room in rooms %}
+            <li><a href="/rooms/{{ room._id.room_id }}">{{ room.room_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<button onclick="window.location.href='/login'">Login</button>
+<button onclick="window.location.href='/logout'">Logout</button>
+<button onclick="window.location.href='/about'">About</button>
+<button onclick="window.location.href='/create-room'">Create Room</button>
+<button onclick="window.location.href='/signup'">Sign Up</button>
+</body>
+</html>
