@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,4 +17,80 @@
     <button type="submit">Submit</button>
 </form>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>KnoxLogin</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/login.css') }}" />
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="sie-edge" />
+    <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Slider Form</title>
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form method="post" action="/signup">
+                <h1 style="padding-bottom: 10px;">Create Account</h1>
+        
+                <input type="text" placeholder="Name" name="username">
+                <input type="email" placeholder="Email" name="email">
+                <input type="password" placeholder="Password" name="password">
+                <button type="submit" style="margin-top: 25px;">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form method="post" action="/login">
+                <h1 style="padding-bottom: 10px;">Sign In</h1>
+                <input type="email" placeholder="Email" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <button style="margin-top: 25px;">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    {% if message %}
+                    <h1>{{message}}</h1>    
+                        
+                    {% else %}
+                    <h1>Hello,Friend</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    {% endif %}
+                    
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</body>
+
 </html>
+<!-- partial -->
+<script  src="{{ url_for('static', filename='scripts/login.js') }}"></script>
+
+</body>
+</html>
+

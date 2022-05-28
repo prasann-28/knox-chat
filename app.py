@@ -32,7 +32,7 @@ block_padding = 11
 block_size = 16
 
 
-@app.route('/about', methods=['GET', 'POST'])
+@app.route('/demo', methods=['GET', 'POST'])
 def hello():
     cryp = []
     if request.method == 'POST':
@@ -53,7 +53,7 @@ def hello():
         if 'file' not in request.files or file.filename == '':
             flash('No file part')
             cryp = [plaintext, adv, cipher]
-            return render_template('about.html', cryp=cryp)
+            return render_template('demo.html', cryp=cryp)
         else:
             # if user does not select file, browser also
             # submit a empty part without filename
@@ -69,21 +69,35 @@ def hello():
             cryp = [plaintext, adv, cipher, dec_img,
                     adv_img, '/uploads/' + file.filename]
 
-    return render_template('about.html', cryp=cryp)
+    return render_template('demo.html', cryp=cryp)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    # rooms = []
+    # if current_user.is_authenticated:
+    #     rooms = get_rooms_for_user(current_user.username)
+    return render_template("index.html")
+
+@app.route('/eve-log/<room_id>/', methods=['GET', 'POST'])
+def eveLog(room_id):
+    messages, received_message = get_messages(room_id)
+    room = get_room(room_id)
+    room_members = get_room_members(room_id)
+    return render_template("eve_log.html", room=room, room_members=room_members,
+                               messages=messages)
+
+@app.route('/chat-landing', methods=['GET', 'POST'])
+def chatHome():
     rooms = []
     if current_user.is_authenticated:
         rooms = get_rooms_for_user(current_user.username)
-    return render_template("index.html", rooms=rooms)
-
+    return render_template("chat_landing.html", rooms=rooms)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('chatHome'))
 
     message = ''
     if request.method == 'POST':
@@ -93,7 +107,7 @@ def login():
 
         if user and user.check_password(password_input):
             login_user(user)
-            return redirect(url_for('home'))
+            return redirect(url_for('chatHome'))
         else:
             message = 'Failed to login!'
     return render_template('login.html', message=message)
@@ -102,7 +116,7 @@ def login():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('chatHome'))
 
     message = ''
     if request.method == 'POST':
@@ -114,14 +128,14 @@ def signup():
             return redirect(url_for('login'))
         except DuplicateKeyError:
             message = "User already exists!"
-    return render_template('signup.html', message=message)
+    return render_template('login.html', message=message)
 
 
 @app.route("/logout/")
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('chatHome'))
 
 
 @app.route('/create-room/', methods=['GET', 'POST'])
@@ -183,7 +197,7 @@ def view_room(room_id):
         room_members = get_room_members(room_id)
         messages, received_message = get_messages(room_id)
         return render_template('view_room.html', username=current_user.username, room=room, room_members=room_members,
-                               messages=messages)
+                               messages=messages, room_id = room_id)
     else:
         return "Room not found", 404
 
@@ -193,11 +207,12 @@ def view_room(room_id):
 def get_older_messages(room_id):
     room = get_room(room_id)
     if room and is_room_member(room_id, current_user.username):
-        page = int(request.args.get('page', 0))
-        messages, received_message = get_messages(room_id, page)
+        # page = int(request.args.get('page', 0))
+        messages, received_message = get_messages(room_id)
         return dumps(messages)
     else:
         return "Room not found", 404
+
 
 
 @socketio.on('send_message')

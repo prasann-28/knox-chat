@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>KnoxChat</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/chat-landing.css') }}" />
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class="showcase">
+			<div class="video-container">
+				<video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop></video>
+			</div>
+            
+			<div class="content">
+                {% if current_user.is_authenticated %} 
+                <h1>Hello {{ current_user.username }}</h1>
+                <div style="display: flex;
+                flex-direction: column;
+                ">
+                <div>
+                    <button class="btn" onclick="window.location.href='/logout'" style="margin: 40px;">Logout</button>
+                    <button class="btn" onclick="window.location.href='/create-room'">Create Room</button>
+                </div>
+                <div>
+                    <h2>Rooms</h2>
+                    {% for room in rooms %}
+                    <a class="btn" style="margin: 40px;" href="/rooms/{{ room._id.room_id }}" >{{ room.room_name }}</a> 
+                    {% endfor %}
+                </div>
+                </div>
+                {% else %}
+                <h1>KnoxChat</h1>
+				<h3>Chat App using AI for Security</h3>
+                <button class="btn" onclick="window.location.href='/signup'" style="margin-right: 40px;">Signup</button>
+                <button class="btn" onclick="window.location.href='/login'">Login</button>
+                {% endif %}    
+            </div>
+		</section>
+<!-- partial -->
+  
+</body>
+</html>

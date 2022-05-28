@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eve's Log</title>
+</head>
+<body>
+<h1>chat room: {{ room.name }}</h1>
+<div id="messages">
+    {% for message in messages %}
+        <div>{{ message.sender }}: [{{ message.created_at }}] : {{message.eve}}</div>
+    {% endfor %}
+</div>
+
+
+<h3>Members</h3>
+<ul>
+    {% for member in room_members %}
+        <li>{{ member._id.username }}</li>
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>

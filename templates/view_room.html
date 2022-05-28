@@ -1,37 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <title>My Chat App</title>
+  <meta charset="UTF-8">
+  <title>KnoxChat</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css'>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/room.css') }}" />
+
 </head>
 <body>
-<h1>Welcome to chat room: {{ room.name }}</h1>
 
+<div class="container">
+	<div class="row no-gutters">
+	  <div class="col-md-4 border-right">
+		<div class="settings-tray">
+		  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/filip.jpg" alt="Profile img">
+		  <span class="settings-tray--right">
+			<i class="material-icons">cached</i>
+			<i class="material-icons">message</i>
+			<i class="material-icons">menu</i>
+		  </span>
+		</div>
+		<div class="search-box">
+		  <div class="input-wrapper">
+			<i class="material-icons">search</i>
+			<input placeholder="Search here" type="text">
+		  </div>
+		</div>
+		{% for member in room_members %}
+		{% if member._id.username == current_user.username %}
+			
+		{% else %}
+		<div class="friend-drawer friend-drawer--onhover">
+			<img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+			<div class="text">
+			  <h6>{{member._id.username}}</h6>
+			  <p class="text-muted"></p>
+			</div>
+			<span class="time text-muted small"></span>
+		  </div>	
+		{% endif %}
+		
+		{% endfor %}
+		<hr>
+		<div class="friend-drawer friend-drawer--onhover" onclick="window.location.href='/eve-log/{{room_id}}'">
+		  <img class="profile-image" style="opacity: 0;" src="" alt="">
+		  <div class="text">
+			<h6>Eve</h6>
+			<p class="text-muted">I know..Maybe</p>
+		  </div>
+		  <span class="time text-muted small"></span>
+		</div>
+		<hr>
+		<div class="friend-drawer friend-drawer--onhover">
+			<img class="profile-image" style="opacity: 0;" src="" alt="">
+			<div class="text">
+			  <h6></h6>
+			  <p class="text-muted"></p>
+			</div>
+			<span class="time text-muted small"></span>
+		  </div>
+		  <hr>
+		  <div class="friend-drawer friend-drawer--onhover">
+			<img class="profile-image" style="opacity: 0;" src="" alt="">
+			<div class="text">
+			  <h6></h6>
+			  <p class="text-muted"></p>
+			</div>
+			<span class="time text-muted small"></span>
+		  </div>
+		  <hr>
+		  <div class="friend-drawer friend-drawer--onhover">
+			<img class="profile-image" style="opacity: 0;" src="" alt="">
+			<div class="text">
+			  <h6></h6>
+			  <p class="text-muted"></p>
+			</div>
+			<span class="time text-muted small"></span>
+		  </div>
+		  <hr>
+	
+	  </div>
+	  <div class="col-md-8">
+		<div class="settings-tray">
+			<div class="friend-drawer no-gutters friend-drawer--grey">
+			<img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+			<div class="text">
+			  <h6>{{room_members[0]._id.username}}</h6>
+			  <p class="text-muted">Layin' down the law since like before Christ...</p>
+			</div>
+			<span class="settings-tray--right">
+			  <i class="material-icons">cached</i>
+			  <i class="material-icons">message</i>
+			  <i class="material-icons">menu</i>
+			</span>
+		  </div>
+		</div>
+		
+		<div class="chat-panel">
+			{% for message in messages %}
+			{% if message.sender == current_user.username %}
+			<div class="row no-gutters">
+				<div class="col-md-3 offset-md-9">
+				  <div class="chat-bubble chat-bubble--right">
+					{{message.text}}
+					<script>
+						console.log(message.text)
+					</script>
+				  </div>
+				</div>
+			  </div>
+			{% else %}
+			<div class="row no-gutters">
+				<div class="col-md-3">
+				  <div class="chat-bubble chat-bubble--left">
+					{{message.text}}
+				  </div>
+				</div>
+			  </div>
+			{% endif %}
+		{% endfor %}
+		  
+		  
+		  
+		  <div class="row">
+			<div class="col-12">
+			  <div class="chat-box-tray">
+				<i class="material-icons">sentiment_very_satisfied</i>
+					<input type="text" id="message_input" placeholder="Enter your message here">
+					<i class="material-icons">mic</i>
+					<i class="material-icons" id="message_input_form" >send</i>
+				</form>	
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
 
-<button type="button" id="load_older_messages_btn">Load Older Messages</button>
-<div id="messages">
-    {% for message in messages %}
-        <div><b>{{ message.sender }}&nbsp;[{{ message.created_at }}]:&nbsp;</b> {{ message.text }}</div>
-    {% endfor %}
-</div>
-<div id="messages">
-    {% for message in messages %}
-        <div>eve&nbsp;[{{ message.created_at }}] : {{message.eve}}</div>
-    {% endfor %}
-</div>
-
-<form id="message_input_form">
-    <input type="text" id="message_input" placeholder="Enter your message here">
-    <button type="submit">Send</button>
-</form>
-
-<h3>Members</h3>
-<ul>
-    {% for member in room_members %}
-        <li>{{ member._id.username }}</li>
-    {% endfor %}
-</ul>
-
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script  src="{{ url_for('static', filename='scripts/room.js') }}"></script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
@@ -46,7 +155,7 @@
 
         let message_input = document.getElementById('message_input');
 
-        document.getElementById('message_input_form').onsubmit = function (e) {
+        document.getElementById('message_input_form').onclick = function (e) {
             e.preventDefault();
             let message = message_input.value.trim();
             if (message.length) {
@@ -116,3 +225,170 @@
     });
 </script>
 </html>
+<!-- <!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - WhatsApp Inspired Bootstrap Chat UI Direct Messaging App</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css'>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/room.css') }}" />
+
+</head>
+<body>
+
+<div class="container">
+	<div class="row no-gutters">
+	  <div class="col-md-4 border-right">
+		<div class="settings-tray">
+		  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/filip.jpg" alt="Profile img">
+		  <span class="settings-tray--right">
+			<i class="material-icons">cached</i>
+			<i class="material-icons">message</i>
+			<i class="material-icons">menu</i>
+		  </span>
+		</div>
+		<div class="search-box">
+		  <div class="input-wrapper">
+			<i class="material-icons">search</i>
+			<input placeholder="Search here" type="text">
+		  </div>
+		</div>
+		<div class="friend-drawer friend-drawer--onhover">
+		  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+		  <div class="text">
+			<h6>Robo Cop</h6>
+			<p class="text-muted">Hey, you're arrested!</p>
+		  </div>
+		  <span class="time text-muted small">13:21</span>
+		</div>
+		<hr>
+		<div class="friend-drawer friend-drawer--onhover">
+		  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
+		  <div class="text">
+			<h6>Optimus</h6>
+			<p class="text-muted">Wanna grab a beer?</p>
+		  </div>
+		  <span class="time text-muted small">00:32</span>
+		</div>
+		<hr>
+		<div class="friend-drawer friend-drawer--onhover ">
+		  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/real-terminator.png" alt="">
+		  <div class="text">
+			<h6>Skynet</h6>
+			<p class="text-muted">Seen that canned piece of s?</p>
+		  </div>
+		  <span class="time text-muted small">13:21</span>
+		</div>
+		<hr>
+		<div class="friend-drawer friend-drawer--onhover">
+		  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/termy.jpg" alt="">
+		  <div class="text">
+			<h6>Termy</h6>
+			<p class="text-muted">Im studying spanish...</p>
+		  </div>
+		  <span class="time text-muted small">13:21</span>
+		</div>
+		<hr>
+		<div class="friend-drawer friend-drawer--onhover">
+		  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rick.jpg" alt="">
+		  <div class="text">
+			<h6>Richard</h6>
+			<p class="text-muted">I'm not sure...</p>
+		  </div>
+		  <span class="time text-muted small">13:21</span>
+		</div>
+		<hr>
+		<div class="friend-drawer friend-drawer--onhover">
+		  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
+		  <div class="text">
+			<h6>XXXXX</h6>
+			<p class="text-muted">Hi, wanna see something?</p>
+		  </div>
+		  <span class="time text-muted small">13:21</span>
+		</div>
+	  </div>
+	  <div class="col-md-8">
+		<div class="settings-tray">
+			<div class="friend-drawer no-gutters friend-drawer--grey">
+			<img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+			<div class="text">
+			  <h6>Robo Cop</h6>
+			  <p class="text-muted">Layin' down the law since like before Christ...</p>
+			</div>
+			<span class="settings-tray--right">
+			  <i class="material-icons">cached</i>
+			  <i class="material-icons">message</i>
+			  <i class="material-icons">menu</i>
+			</span>
+		  </div>
+		</div>
+		<div class="chat-panel">
+		  <div class="row no-gutters">
+			<div class="col-md-3">
+			  <div class="chat-bubble chat-bubble--left">
+				Hello dude!
+			  </div>
+			</div>
+		  </div>
+		  <div class="row no-gutters">
+			<div class="col-md-3 offset-md-9">
+			  <div class="chat-bubble chat-bubble--right">
+				Hello dude!
+			  </div>
+			</div>
+		  </div>
+		  <div class="row no-gutters">
+			<div class="col-md-3 offset-md-9">
+			  <div class="chat-bubble chat-bubble--right">
+				Hello dude!
+			  </div>
+			</div>
+		  </div>
+		  <div class="row no-gutters">
+			<div class="col-md-3">
+			  <div class="chat-bubble chat-bubble--left">
+				Hello dude!
+			  </div>
+			</div>
+		  </div>
+		  <div class="row no-gutters">
+			<div class="col-md-3">
+			  <div class="chat-bubble chat-bubble--left">
+				Hello dude!
+			  </div>
+			</div>
+		  </div>
+		  <div class="row no-gutters">
+			<div class="col-md-3">
+			  <div class="chat-bubble chat-bubble--left">
+				Hello dude!
+			  </div>
+			</div>
+		  </div>
+		  <div class="row no-gutters">
+			<div class="col-md-3 offset-md-9">
+			  <div class="chat-bubble chat-bubble--right">
+				Hello dude!
+			  </div>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col-12">
+			  <div class="chat-box-tray">
+				<i class="material-icons">sentiment_very_satisfied</i>
+				<input type="text" placeholder="Type your message here...">
+				<i class="material-icons">mic</i>
+				<i class="material-icons">send</i>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html> -->
