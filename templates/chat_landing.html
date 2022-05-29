@@ -11,31 +11,38 @@
 <!-- partial:index.partial.html -->
 <section class="showcase">
 			<div class="video-container">
-				<video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop></video>
+				<video src="{{ url_for('static', filename='video.mov') }}" autoplay muted loop></video>
 			</div>
             
 			<div class="content">
                 {% if current_user.is_authenticated %} 
-                <h1>Hello {{ current_user.username }}</h1>
+                <h1>Knox Chat</h1>
+                <h2 style="font-weight:lighter;">Hello <b style="font-weight: bold;">{{ current_user.username }}</b></h2>
                 <div style="display: flex;
                 flex-direction: column;
                 ">
                 <div>
-                    <button class="btn" onclick="window.location.href='/logout'" style="margin: 40px;">Logout</button>
-                    <button class="btn" onclick="window.location.href='/create-room'">Create Room</button>
+                    <button class="btn" onclick="window.location.href='/logout'" style="margin: 40px; font-size:medium;">Logout</button>
+                    <button class="btn" style="font-size: medium;" onclick="window.location.href='/create-room'">Create Room</button>
                 </div>
                 <div>
-                    <h2>Rooms</h2>
+                    {% if rooms %}
+                    <h2>ROOMS</h2>
+                    {% endif %}
                     {% for room in rooms %}
-                    <a class="btn" style="margin: 40px;" href="/rooms/{{ room._id.room_id }}" >{{ room.room_name }}</a> 
+                    <a class="btn" style="margin: 40px;
+                    background-color:slategrey;
+                    text-transform: uppercase;
+                    background-blend-mode:overlay;
+                    " href="/rooms/{{ room._id.room_id }}" >{{ room.room_name }}</a> 
                     {% endfor %}
                 </div>
                 </div>
                 {% else %}
-                <h1>KnoxChat</h1>
-				<h3>Chat App using AI for Security</h3>
-                <button class="btn" onclick="window.location.href='/signup'" style="margin-right: 40px;">Signup</button>
-                <button class="btn" onclick="window.location.href='/login'">Login</button>
+                <h1>Knox Chat</h1>
+				<h3>Chat App that uses AI</h3>
+                <button class="btn" onclick="window.location.href='/signup'" style="margin-right: 40px; font-size:medium;">Signup</button>
+                <button class="btn" style="font-size: medium;" onclick="window.location.href='/login'">Login</button>
                 {% endif %}    
             </div>
 		</section>
