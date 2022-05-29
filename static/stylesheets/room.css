@@ -173,3 +173,13 @@ hr {
 .chat-box-tray i:last-of-type {
   margin-left: 25px;
 }
+
+.chat-panel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chat-panel {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

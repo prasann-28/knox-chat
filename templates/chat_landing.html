@@ -17,7 +17,10 @@
 			<div class="content">
                 {% if current_user.is_authenticated %} 
                 <h1>Knox Chat</h1>
-                <h2 style="font-weight:lighter;">Hello <b style="font-weight: bold;">{{ current_user.username }}</b></h2>
+                <h2 style="font-weight:lighter;">Hello 
+                    <b style="font-weight: bold;
+                    text-transform: uppercase;
+                    ">{{ current_user.username }}</b></h2>
                 <div style="display: flex;
                 flex-direction: column;
                 ">
@@ -40,7 +43,7 @@
                 </div>
                 {% else %}
                 <h1>Knox Chat</h1>
-				<h3>Chat App that uses AI</h3>
+				<h3 style="font-weight: lighter;">Chat App using AI for confidentiality </h3>
                 <button class="btn" onclick="window.location.href='/signup'" style="margin-right: 40px; font-size:medium;">Signup</button>
                 <button class="btn" style="font-size: medium;" onclick="window.location.href='/login'">Login</button>
                 {% endif %}    

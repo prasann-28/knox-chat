@@ -1,3 +1,5 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import pickle
 from bson.binary import Binary
 from datetime import datetime
@@ -10,8 +12,7 @@ from pymongo.errors import DuplicateKeyError
 from helper import *
 from db import get_user, save_user, save_room, add_room_members, get_rooms_for_user, get_room, is_room_member, \
     get_room_members, is_room_admin, update_room, remove_room_members, save_message, get_messages
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 
 
 UPLOAD_FOLDER = './received/'
