@@ -399,7 +399,6 @@ def textEncryption(raw_message):
 def textDecryption(jsonCipher, jsonKey):
     cipher = pickle.loads(jsonCipher)
     key = pickle.loads(jsonKey)
-    print(type(key))
 
     decipher = (bob.predict([cipher, key]) > 0.5).astype(int)
     plaintext = processBinaryMessage(decipher)

@@ -42,7 +42,7 @@ def hello():
         messages = processRawMessage(raw_message)
         message = messages[0]
         key = messages[1]
-        print(request.url)
+        
         cipher = alice.predict([message, key])
         decipher = (bob.predict([cipher, key]) > 0.5).astype(int)
         adversary = (eve.predict(cipher) > 0.5).astype(int)
@@ -224,7 +224,7 @@ def handle_send_message_event(data):
     data['created_at'] = datetime.now().strftime("%d %b, %H:%M")
     cipher, key = textEncryption(data['message'])
     eve_dec = eveTextDecryption(cipher)
-    print(eve_dec)
+    
     # data['eve'] = Binary(pickle.dumps(eve_dec, protocol=2), subtype=128)
     data['eve'] = eve_dec
     # record['feature2'] = Binary(pickle.dumps(npArray, protocol=2), subtype=128 )
