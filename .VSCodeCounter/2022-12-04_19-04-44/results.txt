@@ -1,0 +1,36 @@
+Date : 2022-12-04 19:04:44
+Directory : /Users/prasann/Projects/knox-chat/notebooks
+Total : 10 files,  6532 codes, 13 comments, 27 blanks, all 6572 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| JSON     |          9 |      6,451 |          2 |          8 |      6,461 |
+| Python   |          1 |         81 |         11 |         19 |        111 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         10 |      6,532 |         13 |         27 |      6,572 |
+| image encryption                                                            |          1 |      2,883 |          2 |          0 |      2,885 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                    | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part1.ipynb             | JSON     |         81 |          0 |          1 |         82 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part2.ipynb             | JSON     |         61 |          0 |          1 |         62 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part3.ipynb             | JSON     |         77 |          0 |          1 |         78 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part4.ipynb             | JSON     |         52 |          0 |          1 |         53 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part5.ipynb             | JSON     |         77 |          0 |          1 |         78 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part6.ipynb             | JSON     |         62 |          0 |          1 |         63 |
+| /Users/prasann/Projects/knox-chat/notebooks/FYP_ANC.ipynb                   | JSON     |      2,433 |          0 |          1 |      2,434 |
+| /Users/prasann/Projects/knox-chat/notebooks/NeuralCryp.ipynb                | JSON     |        725 |          0 |          1 |        726 |
+| /Users/prasann/Projects/knox-chat/notebooks/helper.py                       | Python   |         81 |         11 |         19 |        111 |
+| /Users/prasann/Projects/knox-chat/notebooks/image encryption/ImageEnc.ipynb | JSON     |      2,883 |          2 |          0 |      2,885 |
+| Total                                                                       |          |      6,532 |         13 |         27 |      6,572 |
++-----------------------------------------------------------------------------+----------+------------+------------+------------+------------+

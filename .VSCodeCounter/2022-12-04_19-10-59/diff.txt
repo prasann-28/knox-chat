@@ -1,0 +1,71 @@
+Date : 2022-12-04 19:10:59
+Directory : /Users/prasann/Projects/knox-chat
+Total : 35 files,  9074 codes, 155 comments, 439 blanks, all 9668 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          9 |      6,451 |          2 |          8 |      6,461 |
+| CSS        |          6 |        917 |         15 |        123 |      1,055 |
+| Python     |          5 |        695 |         43 |        187 |        925 |
+| HTML       |          9 |        580 |         80 |         77 |        737 |
+| YAML       |          1 |        220 |          0 |          1 |        221 |
+| JavaScript |          4 |        207 |         15 |         39 |        261 |
+| Markdown   |          1 |          4 |          0 |          4 |          8 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         35 |      9,074 |        155 |        439 |      9,668 |
+| notebooks                                                                   |         10 |      6,532 |         13 |         27 |      6,572 |
+| notebooks/image encryption                                                  |          1 |      2,883 |          2 |          0 |      2,885 |
+| static                                                                      |         10 |      1,124 |         30 |        162 |      1,316 |
+| static/scripts                                                              |          4 |        207 |         15 |         39 |        261 |
+| static/stylesheets                                                          |          6 |        917 |         15 |        123 |      1,055 |
+| templates                                                                   |          9 |        580 |         80 |         77 |        737 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                    | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/prasann/Projects/knox-chat/README.md                                 | Markdown   |          4 |          0 |          4 |          8 |
+| /Users/prasann/Projects/knox-chat/app.py                                    | Python     |        201 |         15 |         47 |        263 |
+| /Users/prasann/Projects/knox-chat/db.py                                     | Python     |         69 |          4 |         38 |        111 |
+| /Users/prasann/Projects/knox-chat/helper.py                                 | Python     |        325 |         13 |         74 |        412 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part1.ipynb             | JSON       |         81 |          0 |          1 |         82 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part2.ipynb             | JSON       |         61 |          0 |          1 |         62 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part3.ipynb             | JSON       |         77 |          0 |          1 |         78 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part4.ipynb             | JSON       |         52 |          0 |          1 |         53 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part5.ipynb             | JSON       |         77 |          0 |          1 |         78 |
+| /Users/prasann/Projects/knox-chat/notebooks/ChatApp_Part6.ipynb             | JSON       |         62 |          0 |          1 |         63 |
+| /Users/prasann/Projects/knox-chat/notebooks/FYP_ANC.ipynb                   | JSON       |      2,433 |          0 |          1 |      2,434 |
+| /Users/prasann/Projects/knox-chat/notebooks/NeuralCryp.ipynb                | JSON       |        725 |          0 |          1 |        726 |
+| /Users/prasann/Projects/knox-chat/notebooks/helper.py                       | Python     |         81 |         11 |         19 |        111 |
+| /Users/prasann/Projects/knox-chat/notebooks/image encryption/ImageEnc.ipynb | JSON       |      2,883 |          2 |          0 |      2,885 |
+| /Users/prasann/Projects/knox-chat/prj_env.yaml                              | YAML       |        220 |          0 |          1 |        221 |
+| /Users/prasann/Projects/knox-chat/static/scripts/index.js                   | JavaScript |        120 |         12 |          9 |        141 |
+| /Users/prasann/Projects/knox-chat/static/scripts/login.js                   | JavaScript |          9 |          0 |          4 |         13 |
+| /Users/prasann/Projects/knox-chat/static/scripts/nn.js                      | JavaScript |         71 |          1 |         21 |         93 |
+| /Users/prasann/Projects/knox-chat/static/scripts/room.js                    | JavaScript |          7 |          2 |          5 |         14 |
+| /Users/prasann/Projects/knox-chat/static/stylesheets/chat-landing.css       | CSS        |         93 |          0 |         16 |        109 |
+| /Users/prasann/Projects/knox-chat/static/stylesheets/create_room.css        | CSS        |        194 |          9 |         43 |        246 |
+| /Users/prasann/Projects/knox-chat/static/stylesheets/index.css              | CSS        |        222 |          0 |         17 |        239 |
+| /Users/prasann/Projects/knox-chat/static/stylesheets/login.css              | CSS        |        224 |          5 |         34 |        263 |
+| /Users/prasann/Projects/knox-chat/static/stylesheets/nn.css                 | CSS        |         12 |          0 |          1 |         13 |
+| /Users/prasann/Projects/knox-chat/static/stylesheets/room.css               | CSS        |        172 |          1 |         12 |        185 |
+| /Users/prasann/Projects/knox-chat/templates/chat_landing.html               | HTML       |         50 |          2 |          4 |         56 |
+| /Users/prasann/Projects/knox-chat/templates/create_room.html                | HTML       |         43 |         22 |         14 |         79 |
+| /Users/prasann/Projects/knox-chat/templates/demo.html                       | HTML       |         98 |         11 |         15 |        124 |
+| /Users/prasann/Projects/knox-chat/templates/edit_room.html                  | HTML       |         20 |          0 |          0 |         20 |
+| /Users/prasann/Projects/knox-chat/templates/eve_log.html                    | HTML       |         21 |          0 |          4 |         25 |
+| /Users/prasann/Projects/knox-chat/templates/index.html                      | HTML       |         56 |         23 |          6 |         85 |
+| /Users/prasann/Projects/knox-chat/templates/login.html                      | HTML       |         63 |         22 |         12 |         97 |
+| /Users/prasann/Projects/knox-chat/templates/signup.html                     | HTML       |         23 |          0 |          0 |         23 |
+| /Users/prasann/Projects/knox-chat/templates/view_room.html                  | HTML       |        206 |          0 |         22 |        228 |
+| /Users/prasann/Projects/knox-chat/user.py                                   | Python     |         19 |          0 |          9 |         28 |
+| Total                                                                       |            |      9,074 |        155 |        439 |      9,668 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
